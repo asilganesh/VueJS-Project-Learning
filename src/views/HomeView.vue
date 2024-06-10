@@ -1,51 +1,45 @@
 <script setup>
-import { useStorage } from '@/composables/useStorage';
+import { onMounted, ref } from 'vue';
+import TabbableTextArea from '../components/TabbableTextArea.vue'
+
+let textarea=ref(null)
+let comment="test value"
+
+// onMounted(()=>{
+
+//   textarea.value.addEventListener("keydown",(e)=>{
+//     let t= textarea.value;
+
+//     if(e.code==='Tab'){
+//       let val=t.value,
+//       start =t.selectionStart,
+//       end=t.selectionEnd
+//       t.value=val.substring(0,start)+"\t"+val.substring(end);
+//       t.selectionStart=t.selectionEnd=start+1;
+//       e.preventDefault();
+//     }
+//   })
+// })
 
 
+// function onTabPress(e){
 
-let food = useStorage('food','salad')
-let age = useStorage('age','18')
+//     let t= e.target
 
-
+//       let val=t.value,
+//       start =t.selectionStart,
+//       end=t.selectionEnd
+//       t.value=val.substring(0,start)+"\t"+val.substring(end);
+//       t.selectionStart=t.selectionEnd=start+1;
+// }
 </script>
 
 <template>
-  <main>
-    <p>
-    What is favourite food? <input type="text" v-model="food"  /> 
-  </p>
-  <p>
-   How old are you ?<input type="text" v-model="age"  /> 
-  </p>
+  <main>  
+    <form>
+<TabbableTextArea  v-model="comment" style="width: 100%; height: 300px;"/>
+    </form>
   </main>
 
-  
+
 </template>
-
-<!-- <script>
-// import TheWelcome from '../components/TheWelcome.vue'
-// import { ref } from 'vue';
-
-import { useFlash } from '@/composables/useFlash';
-export default{
-
-  setup(){
-    let {flash} = useFlash();
-
-    return {flash};
-  }
-
-
-}
-</script>
-
-<template>
-  <main>
-    <button @click="flash('it works')">Click</button>
-
-    <!-- <TheWelcome />
-    <p>{{ message }}</p>
-    <button @click="doSomething">Click Me!</button> -->
-<!-- </main>
-</template> -->
--->
